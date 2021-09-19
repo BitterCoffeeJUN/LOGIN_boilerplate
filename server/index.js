@@ -3,6 +3,8 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import URL from './config/dev.js'
 
+import userRouter from './routes/users.js'
+
 const app = express()
 const PORT = 5000
 
@@ -14,6 +16,8 @@ app.get('/', (req, res) => {
     res.send('hello')
 })
 
+app.use('/api/users', userRouter)
+
 mongoose
     .connect(URL, {
         useNewUrlParser: true,
@@ -24,3 +28,4 @@ mongoose
             console.log(`app listening at http://localhost:${PORT}`)
         }),
     )
+    .catch(error => console.log(error))
