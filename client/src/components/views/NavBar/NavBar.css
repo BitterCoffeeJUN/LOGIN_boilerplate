@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
+
+ul > li {
+    margin-left: 10px;
+}
+
+ul > li::before {
+    content: '+';
+}
+
+button {
+    margin: 20px;
+}
