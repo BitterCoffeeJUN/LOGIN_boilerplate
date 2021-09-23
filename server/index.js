@@ -3,7 +3,6 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import URL from './config/dev.js'
 import cookieParser from 'cookie-parser'
-import auth from './middleware/auth.js'
 
 import userRouter from './routes/users.js'
 

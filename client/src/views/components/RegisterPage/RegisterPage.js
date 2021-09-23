@@ -1,11 +1,89 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {useDispatch} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import {registerUser} from '../../../_actions/user_action'
 
-function RegisterPage() {
+function RegisterPage(props) {
+    const [Name, setName] = useState('')
+    const [Email, setEmail] = useState('')
+    const [Password, setPassword] = useState('')
+    const [ConfirmPassword, setConfirmPassword] = useState('')
+
+    const dispatch = useDispatch()
+
+    const onNameHandler = e => {
+        setName(e.currentTarget.value)
+    }
+    const onEmailHandler = e => {
+        setEmail(e.currentTarget.value)
+    }
+    const onPasswordHandler = e => {
+        setPassword(e.currentTarget.value)
+    }
+    const onConfirmPasswordHandler = e => {
+        setConfirmPassword(e.currentTarget.value)
+    }
+
+    const onSubmitHandler = e => {
+        e.preventDefault()
+
+        if (Password !== ConfirmPassword) {
+            return alert('비밀번호가 일치하지 않습니다.')
+        }
+
+        let body = {
+            name: Name,
+            email: Email,
+            password: Password,
+        }
+
+        dispatch(registerUser(body)).then(res => {
+            if (res.payload.success) {
+                props.history.push('/login')
+            } else {
+                alert('회원가입 실패')
+            }
+        })
+    }
+
     return (
         <div>
-            <h1>RegisterPage</h1>
+            <form
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '100vh',
+                }}
+                onSubmit={onSubmitHandler}
+            >
+                <label htmlFor="">Name</label>
+                <input type="text" placeholder="name" value={Name} onChange={onNameHandler} />
+
+                <label htmlFor="">Email</label>
+                <input type="text" placeholder="email" value={Email} onChange={onEmailHandler} />
+
+                <label htmlFor="">Password</label>
+                <input
+                    type="password"
+                    placeholder="password"
+                    value={Password}
+                    onChange={onPasswordHandler}
+                />
+
+                <label htmlFor="">ConfirmPassword</label>
+                <input
+                    type="password"
+                    placeholder="confirm-password"
+                    value={ConfirmPassword}
+                    onChange={onConfirmPasswordHandler}
+                />
+
+                <button>sign up</button>
+            </form>
         </div>
     )
 }
 
-export default RegisterPage
+export default withRouter(RegisterPage)
