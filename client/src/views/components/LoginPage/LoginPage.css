@@ -1,0 +1,45 @@
+.Main-Login {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 'Log-left Log-right';
+    grid-template-columns: 0.8fr 1fr;
+}
+
+.Log-left {
+    grid-area: Log-left;
+    color: white;
+    font-weight: bold;
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #191a21;
+}
+
+.Log-right {
+    height: 100%;
+    grid-area: Log-right;
+    background-color: white;
+}
+
+.Log-right > h2 {
+    height: 30%;
+    display: flex;
+    align-items: flex-end;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+.Log-right > form {
+    height: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px;
+}
+
+form > .TextField {
+    margin-bottom: 10px;
+}

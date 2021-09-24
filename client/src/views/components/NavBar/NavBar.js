@@ -1,15 +1,17 @@
 import axios from 'axios'
 import React from 'react'
 import {useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
+import Link from '@mui/material/Link'
 import {withRouter} from 'react-router-dom'
 
 import './NavBar.css'
+import Button from '@mui/material/Button'
 
 function NavBar(props) {
     const user = useSelector(state => state.user)
 
-    const logoutHandler = () => {
+    const logoutHandler = e => {
         axios.get('/api/users/logout').then(res => {
             if (res.data.success) {
                 props.history.push('/login')
@@ -24,17 +26,31 @@ function NavBar(props) {
             <nav>
                 <ul>
                     <li>
-                        <Link className="link" to="/">
-                            Home
-                        </Link>
+                        <Button className="Btn" variant="contained" href="/" color="secondary">
+                            HOME
+                        </Button>
                     </li>
                     <li>
-                        <Link className="link" to="/login">
-                            sign in
-                        </Link>
-                        <Link className="link" to="/register">
-                            sign up
-                        </Link>
+                        <span>
+                            <Button
+                                className="Btn"
+                                variant="outlined"
+                                href="/login"
+                                color="secondary"
+                            >
+                                sign in
+                            </Button>
+                        </span>
+                        <span>
+                            <Button
+                                className="Btn"
+                                variant="outlined"
+                                href="/register"
+                                color="secondary"
+                            >
+                                sign up
+                            </Button>
+                        </span>
                     </li>
                 </ul>
             </nav>
@@ -43,12 +59,19 @@ function NavBar(props) {
         return (
             <ul>
                 <li>
-                    <Link className="link" to="/">
-                        Home
-                    </Link>
+                    <Button className="Btn" variant="contained" href="/" color="secondary">
+                        HOME
+                    </Button>
                 </li>
                 <li>
-                    <button onClick={logoutHandler}>logout</button>
+                    <Button
+                        className="Btn"
+                        onClick={logoutHandler}
+                        variant="outlined"
+                        color="secondary"
+                    >
+                        LOGOUT
+                    </Button>
                 </li>
             </ul>
         )

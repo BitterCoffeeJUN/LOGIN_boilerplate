@@ -1,8 +1,13 @@
-div {
+.Main-Land {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
-    width: 100%;
+}
+
+.Main-Land > div {
+    margin-top: 20px;
+    font-size: small;
+    color: #9c27b0;
 }

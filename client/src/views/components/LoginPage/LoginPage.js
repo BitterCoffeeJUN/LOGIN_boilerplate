@@ -3,6 +3,11 @@ import {useDispatch} from 'react-redux'
 import {loginUser} from '../../../_actions/user_action'
 import {withRouter} from 'react-router-dom'
 
+import './LoginPage.css'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import SendIcon from '@mui/icons-material/Send'
+
 function LoginPage(props) {
     const [Email, setEmail] = useState('')
     const [Password, setPassword] = useState('')
@@ -35,29 +40,44 @@ function LoginPage(props) {
     }
 
     return (
-        <div>
-            <form
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '100vh',
-                }}
-                onSubmit={onSubmitHandler}
-            >
-                <label htmlFor="">Email</label>
-                <input type="text" placeholder="email" value={Email} onChange={onEmailHandler} />
-                <label htmlFor="">Password</label>
-                <input
-                    type="password"
-                    placeholder="password"
-                    value={Password}
-                    onChange={onPasswordHandler}
-                />
+        <div className="Main-Login">
+            <div className="Log-left">Welcom Page</div>
+            <div className="Log-right">
+                <h2>Sign in</h2>
+                <form onSubmit={onSubmitHandler}>
+                    <TextField
+                        className="TextField"
+                        id="standard-basic"
+                        label="Email"
+                        color="secondary"
+                        variant="standard"
+                        fullWidth
+                        value={Email}
+                        onChange={onEmailHandler}
+                    />
+                    <TextField
+                        className="TextField"
+                        id="standard-password-input"
+                        label="Password"
+                        type="password"
+                        // autoComplete="current-password"
+                        color="secondary"
+                        variant="standard"
+                        fullWidth
+                        value={Password}
+                        onChange={onPasswordHandler}
+                    />
 
-                <button>login</button>
-            </form>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="secondary"
+                        endIcon={<SendIcon />}
+                    >
+                        LOGIN
+                    </Button>
+                </form>
+            </div>
         </div>
     )
 }

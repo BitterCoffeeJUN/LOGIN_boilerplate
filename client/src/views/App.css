@@ -1,0 +1,23 @@
+.body {
+    height: 100vh;
+    display: grid;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+    grid-template-rows: 50px 1fr 50px;
+}
+
+.header {
+    grid-area: header;
+    border-bottom: 3px solid #282a36;
+}
+
+.main {
+    grid-area: main;
+    /* border: 5vh solid #282a36; */
+}
+
+.footer {
+    grid-area: footer;
+}
