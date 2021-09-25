@@ -3,6 +3,8 @@ import {useDispatch} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {registerUser} from '../../../_actions/user_action'
 
+import {Container, Grid, Box} from '@mui/material'
+
 function RegisterPage(props) {
     const [Name, setName] = useState('')
     const [Email, setEmail] = useState('')
@@ -48,16 +50,7 @@ function RegisterPage(props) {
 
     return (
         <div>
-            <form
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '100vh',
-                }}
-                onSubmit={onSubmitHandler}
-            >
+            <form onSubmit={onSubmitHandler}>
                 <label htmlFor="">Name</label>
                 <input type="text" placeholder="name" value={Name} onChange={onNameHandler} />
 
