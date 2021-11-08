@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import {registerUser} from '../../../_actions/user_action'
 
 import {Container, Grid, Box} from '@mui/material'
+import './RegisterPage.css'
 
 function RegisterPage(props) {
     const [Name, setName] = useState('')
@@ -49,33 +50,30 @@ function RegisterPage(props) {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmitHandler}>
-                <label htmlFor="">Name</label>
-                <input type="text" placeholder="name" value={Name} onChange={onNameHandler} />
+        <Box sx={{height: '100vh'}}>
+            <Grid container spacing={2} className="Grid">
+                <Grid item xs={6}>
+                    <h1>Welcome Page</h1>
+                </Grid>
+                <Grid item xs={6}>
+                    <form onSubmit={onSubmitHandler}>
+                        <label htmlFor="">Name</label>
+                        <input type="text" placeholder="name" value={Name} onChange={onNameHandler} />
 
-                <label htmlFor="">Email</label>
-                <input type="text" placeholder="email" value={Email} onChange={onEmailHandler} />
+                        <label htmlFor="">Email</label>
+                        <input type="text" placeholder="email" value={Email} onChange={onEmailHandler} />
 
-                <label htmlFor="">Password</label>
-                <input
-                    type="password"
-                    placeholder="password"
-                    value={Password}
-                    onChange={onPasswordHandler}
-                />
+                        <label htmlFor="">Password</label>
+                        <input type="password" placeholder="password" value={Password} onChange={onPasswordHandler} />
 
-                <label htmlFor="">ConfirmPassword</label>
-                <input
-                    type="password"
-                    placeholder="confirm-password"
-                    value={ConfirmPassword}
-                    onChange={onConfirmPasswordHandler}
-                />
+                        <label htmlFor="">ConfirmPassword</label>
+                        <input type="password" placeholder="confirm-password" value={ConfirmPassword} onChange={onConfirmPasswordHandler} />
 
-                <button>sign up</button>
-            </form>
-        </div>
+                        <button>sign up</button>
+                    </form>
+                </Grid>
+            </Grid>
+        </Box>
     )
 }
 
